@@ -1,0 +1,39 @@
+   
+body{
+    background-image:url("https://img5.goodfon.com/wallpaper/nbig/2/6a/material-design-linii-background-seryi-zheltyi-fon-geometrii.jpg");
+    background-attachment: fixed;
+    background-size:cover;
+    font-family: 'Dancing Script', cursive;
+    
+    }
+
+
+ul li{
+    margin-left: 28px;
+    list-style:disc;
+    display:list-item;
+    color:black;
+   font-size:22px;
+   
+}
+
+h1{
+
+color:brown;
+background-color:#f0a500;
+text-align: center;
+font-size:45px;
+}
+
+h2{
+background-color:green ;
+color:black;
+font-size:35px;
+}
+img{
+    height:200;
+    top:10px;left:1250px;
+    position:absolute;
+    width:250px;
+    
+}
