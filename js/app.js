@@ -38,7 +38,7 @@ let Seattle = {
     NumCookies: function () {
 
         for (let j = 0; j < this.customersByHours.length; j++) {
-        this.cookiesNumber.push(this.customersByHours[j] * this.avg);
+        this.cookiesNumber.push(Math.floor(this.customersByHours[j] * this.avg));
        this.total+= this.cookiesNumber[j];
 
 
@@ -58,7 +58,7 @@ let Seattle = {
         for (let i = 0; i < hours.length; i++) {
             let liElement = document.createElement('li');
             ulElement.appendChild(liElement);
-            liElement.textContent = hours[i] + " " + this.customersByHours[i] + " ";
+            liElement.textContent = hours[i] + " " + this.cookiesNumber[i] + " ";
         }
 
        
@@ -129,7 +129,7 @@ let Tokyo = {
     NumCookies: function () {
 
         for (let j = 0; j < this.customersByHours.length; j++) {
-        this.cookiesNumber.push(this.customersByHours[j] * this.avg);
+        this.cookiesNumber.push(Math.floor(this.customersByHours[j] * this.avg));
        this.total+= this.cookiesNumber[j];
 
 
@@ -152,7 +152,7 @@ let Tokyo = {
         for(let i=0;i<hours.length;i++){
             let liElement=document.createElement('li');
             ulElement.appendChild(liElement);
-            liElement.textContent=hours[i]+" "+this.customersByHours[i]+ " ";   
+            liElement.textContent=hours[i]+" "+this.cookiesNumber[i]+ " ";   
           }
         
     
@@ -207,7 +207,7 @@ let Dubai = {
     NumCookies: function () {
 
         for (let j = 0; j < this.customersByHours.length; j++) {
-        this.cookiesNumber.push(this.customersByHours[j] * this.avg);
+        this.cookiesNumber.push(Math.floor(this.customersByHours[j] * this.avg));
        this.total+= this.cookiesNumber[j];
 
 
@@ -230,7 +230,7 @@ let Dubai = {
         for(let i=0;i<hours.length;i++){
             let liElement=document.createElement('li');
             ulElement.appendChild(liElement);
-            liElement.textContent=hours[i]+" "+this.customersByHours[i]+ " ";   
+            liElement.textContent=hours[i]+" "+this.cookiesNumber[i]+ " ";   
           }
         
     
@@ -283,7 +283,7 @@ let Paris = {
     NumCookies: function () {
 
         for (let j = 0; j < this.customersByHours.length; j++) {
-        this.cookiesNumber.push(this.customersByHours[j] * this.avg);
+        this.cookiesNumber.push(Math.floor(this.customersByHours[j] * this.avg));
        this.total+= this.cookiesNumber[j];
 
 
@@ -306,7 +306,7 @@ let Paris = {
         for(let i=0;i<hours.length;i++){
             let liElement=document.createElement('li');
             ulElement.appendChild(liElement);
-            liElement.textContent=hours[i]+" "+this.customersByHours[i]+ " ";   
+            liElement.textContent=hours[i]+" "+this.cookiesNumber[i]+ " ";   
           }
         
     
@@ -358,7 +358,7 @@ let Lima = {
     NumCookies: function () {
 
         for (let j = 0; j < this.customersByHours.length; j++) {
-        this.cookiesNumber.push(this.customersByHours[j] * this.avg);
+        this.cookiesNumber.push(Math.floor(this.customersByHours[j] * this.avg));
        this.total+= this.cookiesNumber[j];
 
 
@@ -381,7 +381,7 @@ let Lima = {
         for(let i=0;i<hours.length;i++){
             let liElement=document.createElement('li');
             ulElement.appendChild(liElement);
-            liElement.textContent=hours[i]+" "+this.customersByHours[i]+ " ";   
+            liElement.textContent=hours[i]+" "+this.cookiesNumber[i]+ " ";   
           }
         
     
