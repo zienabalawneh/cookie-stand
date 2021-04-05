@@ -37,3 +37,51 @@ img{
     width:250px;
     
 }
+
+
+h3{
+
+    color:brown;
+    
+    text-align: center;
+    font-size:32px;
+
+}
+
+a{
+text-decoration: none;
+
+}
+table{
+    position: absolute;
+    top:300px;
+    left: 30px;;
+    width:80% ;
+    border: 2px solid black;
+}
+
+
+  
+  
+
+th {
+color:black;
+font-size:30px;
+background-color:green ;
+text-align: center;
+
+font-weight: bold;
+border: 2px solid black;
+}
+
+
+td{
+    color:brown;
+    background-color:#f0a500;
+    font-size:30px;
+    text-align: center;
+
+    border: 2px solid black;
+}
+
+
