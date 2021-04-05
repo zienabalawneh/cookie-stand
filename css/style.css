@@ -38,6 +38,20 @@ img{
     
 }
 
+
+h3{
+
+    color:brown;
+    
+    text-align: center;
+    font-size:32px;
+
+}
+
+a{
+text-decoration: none;
+
+}
 table{
     position: absolute;
     top:300px;
@@ -69,4 +83,5 @@ td{
 
     border: 2px solid black;
 }
+
 
