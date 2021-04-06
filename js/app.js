@@ -3,22 +3,22 @@
 
 let hours = ['06:00 am', '07:00 am', '08:00 am', '09:00 am', '10:00 am', '11:00 am', '12:00 pm', '01:00 pm', '02:00 pm', '03:00 pm', '04:00 pm', '05:00 pm', '06:00 pm', '07:00 pm', '08:00 pm'];
 
+let ShopesName = [];
 
 
-function City(name, min, max, avg) {
+function Stores(name, minCus, maxCus, avgCookies) {
   this.name = name;
-  this.min = min;
-  this.max = max;
-  this.avg = avg;
+  this.minCus = minCus;
+  this.maxCus = maxCus;
+  this.avgCookies = avgCookies;
   this.custmPerHours = [];
   this.cookiesNum = [];
-
   this.totalCookies = 0;
   this.cookies = 0;
-  City.allCitys.push(this);
+  ShopesName.push(this);
 }
 
-City.allCitys = [];
+
 
 
 
@@ -31,24 +31,24 @@ function getRandomNumber(min, max) {
 
 //--------------------------------------------------------------
 
-City.prototype.NumCustomers = function () {
+Stores.prototype.NumCustomers = function () {
   for (let i = 0; i < hours.length; i++) {
-    this.custmPerHours.push(getRandomNumber(this.min, this.max));
+    this.custmPerHours.push(getRandomNumber(this.minCus, this.maxCus));
   }
 };
 
 
 //-----------------------------------------------------------------------------------
 
-let arrayTotal = [];
+let grossTotal = [];
 
-City.prototype.numCookiesByHour = function () {
+Stores.prototype.numCookiesByHour = function () {
   for (let i = 0; i < hours.length; i++) {
-    this.cookiesNum.push(Math.floor(this.custmPerHours[i] * this.avg));
+    this.cookiesNum.push(Math.floor(this.custmPerHours[i] * this.avgCookies));
     this.totalCookies += this.cookiesNum[i];
-
-  }
-  arrayTotal.push(this.totalCookies);
+}
+  
+  grossTotal.push(this.totalCookies);
 };
 
 
@@ -59,21 +59,21 @@ City.prototype.numCookiesByHour = function () {
 function CreateTableHeader() {
 
 
-  const tr1El = document.createElement('tr');
-  theadEl.appendChild(tr1El);
-  const thEl = document.createElement('th');
-  tr1El.appendChild(thEl);
-  thEl.textContent = 'City/Time';
+  const headRow = document.createElement('tr');
+  theadEl.appendChild(headRow);
+  const firstTd = document.createElement('th');
+  headRow.appendChild(firstTd);
+  firstTd.textContent = 'City/Time';
 
   for (let i = 0; i < hours.length; i++) {
-    const thEl = document.createElement('th');
-    tr1El.appendChild(thEl);
-    thEl.textContent = hours[i];
+    const hourTh = document.createElement('th');
+    headRow.appendChild(hourTh);
+    hourTh.textContent = hours[i];
   }
 
-  const th2El = document.createElement('th');
-  tr1El.appendChild(th2El);
-  th2El.textContent = 'Daily Location Total';
+  const headTotal = document.createElement('th');
+  headRow.appendChild(headTotal);
+  headTotal.textContent = 'Daily Location Total';
 }
 
 
@@ -82,23 +82,23 @@ function CreateTableHeader() {
 //--------------------------------------body table-------------------------------------
 
 
-City.prototype.renderObjects = function () {
+Stores.prototype.renderObjects = function () {
 
-  const tr2El = document.createElement('tr');
-  tbodyEl.appendChild(tr2El);
+  const bodyRowTr = document.createElement('tr');
+  tbodyEl.appendChild(bodyRowTr);
 
-  const thEl = document.createElement('td');
-  tr2El.appendChild(thEl);
-  thEl.textContent = this.name;
+  const nameStoretd = document.createElement('td');
+  bodyRowTr.appendChild(nameStoretd);
+  nameStoretd.textContent = this.name;
 
   for (let i = 0; i < this.cookiesNum.length; i++) {
-    const tdEl = document.createElement('td');
-    tr2El.appendChild(tdEl);
-    tdEl.textContent = this.cookiesNum[i];
+    const numCookieTd = document.createElement('td');
+    bodyRowTr.appendChild(numCookieTd);
+    numCookieTd.textContent = this.cookiesNum[i];
   }
-  const td2El = document.createElement('td');
-  tr2El.appendChild(td2El);
-  td2El.textContent = this.totalCookies;
+  const totalTd = document.createElement('td');
+  bodyRowTr.appendChild(totalTd);
+  totalTd.textContent = this.totalCookies;
 };
 
 
@@ -108,37 +108,39 @@ City.prototype.renderObjects = function () {
 
 function CreateTableFooter() {
 
-  let totalOfTotal = 0;
-  const tr8El = document.createElement('tr');
-  tableEl.appendChild(tr8El);
+  let grossOfTotal = 0;
 
-  const th2El = document.createElement('th');
-  tr8El.appendChild(th2El);
-  th2El.textContent = 'Totals';
+  
+  const footerRow = document.createElement('tr');
+  tableEl.appendChild(footerRow);
+
+  const labelTotelTd = document.createElement('th');
+  footerRow.appendChild(labelTotelTd);
+  labelTotelTd.textContent = 'Totals';
 
   for (let i = 0; i < hours.length; i++) {
-    const thEl = document.createElement('th');
-    tr8El.appendChild(thEl);
+    const footerTotalTh = document.createElement('th');
+    footerRow.appendChild(footerTotalTh);
 
-    let total2 = 0;
-    for (let j = 0; j < City.allCitys.length; j++) {
-      total2 += City.allCitys[j].cookiesNum[i];
+    let total = 0;
+    for (let j = 0; j < ShopesName.length; j++) {
+      total += ShopesName[j].cookiesNum[i];
     }
-    thEl.textContent = total2;
+    footerTotalTh.textContent = total;
   }
 
 
 
 
-  for (let i = 0; i < arrayTotal.length; i++) {
-    totalOfTotal += arrayTotal[i];
+  for (let i = 0; i < grossTotal.length; i++) {
+    grossOfTotal += grossTotal[i];
   }
 
 
 
   const th3El = document.createElement('th');
-  tr8El.appendChild(th3El);
-  th3El.textContent = totalOfTotal;
+  footerRow.appendChild(th3El);
+  th3El.textContent = grossOfTotal;
 
 }
 
@@ -183,11 +185,11 @@ tableEl.appendChild(tfootEl);
 
 
 CreateTableHeader();
-const seatle = new City('seatle', 23, 65, 6.3);
-const tokyo = new City('Tokyo', 3, 24, 1.2);
-const dubai = new City('Dubai', 11, 38, 3.7);
-const paris = new City('Paris', 20, 38, 2.3);
-const lima = new City('Lima', 2, 16, 4.6);
+const seatle = new Stores('seatle', 23, 65, 6.3);
+const tokyo = new Stores('Tokyo', 3, 24, 1.2);
+const dubai = new Stores('Dubai', 11, 38, 3.7);
+const paris = new Stores('Paris', 20, 38, 2.3);
+const lima = new Stores('Lima', 2, 16, 4.6);
 
 
 seatle.NumCustomers(this.min, this.max);
@@ -218,7 +220,6 @@ dubai.renderObjects();
 paris.renderObjects();
 
 lima.renderObjects();
-
 
 CreateTableFooter();
 
