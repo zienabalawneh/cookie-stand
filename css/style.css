@@ -30,7 +30,8 @@ background-color:green ;
 color:black;
 font-size:35px;
 }
-img{
+
+#locations img{
     height:200;
     top:10px;left:1250px;
     position:absolute;
@@ -82,6 +83,55 @@ td{
     text-align: center;
 
     border: 2px solid black;
+}
+
+
+div.gallery {
+    margin: 5px;
+    border: 4px dashed  #f0a500 ;
+    float: left;
+    width: 180px;
+   position:relative; 
+   top:50px;
+   left: 150px;
+   border-radius: 20px;
+   padding: 25px;
+   
+   
+  }
+  
+  div.gallery:hover {
+    border: 4px solid green;
+    color: #f0a500 ;
+  }
+  
+  div.gallery img {
+    width:100%;
+    height:200px;
+border-radius: 15px;
+  }
+  
+  div.desc {
+    text-align: center;
+    margin-bottom:50px;
+  }
+  div.desc ul li{
+    list-style: square;
+    color:#f0a500 ;
+    margin: 25px;
+}
+
+ footer {
+    clear: left;
+    height: 100px;
+    background-color: #f0a500;
+    position: relative;
+    top: 150px;
+    text-align: center;
+    font-size:45px;
+    
+    color:brown;
+
 }
 
 

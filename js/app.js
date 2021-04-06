@@ -163,6 +163,9 @@ const imageElement = document.createElement('img');
 headerElement.appendChild(imageElement);
 imageElement.setAttribute('src', 'img/salmon (2).png');
 
+
+
+
 const mainElement = document.createElement('main');
 parent.appendChild(mainElement);
 
