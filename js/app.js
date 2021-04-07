@@ -46,8 +46,8 @@ Stores.prototype.numCookiesByHour = function () {
   for (let i = 0; i < hours.length; i++) {
     this.cookiesNum.push(Math.floor(this.custmPerHours[i] * this.avgCookies));
     this.totalCookies += this.cookiesNum[i];
-}
-  
+  }
+
   grossTotal.push(this.totalCookies);
 };
 
@@ -110,7 +110,7 @@ function CreateTableFooter() {
 
   let grossOfTotal = 0;
 
-  
+
   const footerRow = document.createElement('tr');
   tableEl.appendChild(footerRow);
 
@@ -138,9 +138,9 @@ function CreateTableFooter() {
 
 
 
-  const th3El = document.createElement('th');
-  footerRow.appendChild(th3El);
-  th3El.textContent = grossOfTotal;
+  const lastTh = document.createElement('th');
+  footerRow.appendChild(lastTh);
+  lastTh.textContent = grossOfTotal;
 
 }
 
@@ -169,6 +169,11 @@ imageElement.setAttribute('src', 'img/salmon (2).png');
 const mainElement = document.createElement('main');
 parent.appendChild(mainElement);
 
+
+/*const sectionForm=document.createElement('section');
+mainElement.appendChild(sectionForm);*/
+
+
 const tableEl = document.createElement('table');
 mainElement.appendChild(tableEl);
 
@@ -182,7 +187,7 @@ tableEl.appendChild(tbodyEl);
 const tfootEl = document.createElement('tfoot');
 tableEl.appendChild(tfootEl);
 
-
+//------------------
 
 //----------------------------------------------------------------------------------------
 
@@ -225,6 +230,71 @@ paris.renderObjects();
 lima.renderObjects();
 
 CreateTableFooter();
+
+
+
+
+
+var formElement = document.getElementById('form');
+formElement.addEventListener('submit', FormSubmitted);
+
+
+function FormSubmitted(event) {
+
+  // prevent the default behaviour of refreshing the page
+  event.preventDefault();
+
+
+
+  // to remove last row 
+  tableEl.removeChild(tableEl.lastChild);
+  //tableEl.removeChild(tableEl.childNodes[1]);
+
+
+  let name = event.target.name.value;
+  let minCus = event.target.minCus.value;
+  let maxCus = event.target.maxCus.value;
+  let avgCookies = event.target.avgCookies.value;
+
+  let store1 = new Stores(name, minCus, maxCus, avgCookies);
+  // console.log(store1);
+
+  //to show instances info 
+  //console.log(ShopesName);
+
+
+
+
+  //call function 
+  store1.NumCustomers(this.minCus, this.maxCus);
+  store1.numCookiesByHour();
+
+
+  //reset() function to remove input in from (reset empyte)
+  formElement.reset();
+
+  //call function  to add new row and create footer 
+  store1.renderObjects();
+  CreateTableFooter();
+
+
+
+  //another way to add item form  but it not work becues I do not want remove all table just remove last row and add new row using function renderObjects() CreateTableFooter
+  /*
+   let containers =document.getElementById('tableEl');
+   containers.textContent='';
+  
+   CreateTableHeader();
+   for (let z = 0; z < ShopesName.length; z++) {
+    ShopesName[z].NumCustomers(this.minCus, this.maxCus);
+    ShopesName[z].numCookiesByHour();
+    ShopesName[z].renderObjects();
+    }
+  CreateTableFooter();
+  */
+}
+
+//------------------------------------------------------
 
 
 
