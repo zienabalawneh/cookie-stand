@@ -181,10 +181,10 @@ mainElement.appendChild(tableEl);
 const theadEl = document.createElement('thead');
 tableEl.appendChild(theadEl);
 
-const tbodyEl = document.createElement('tbody');
+let tbodyEl = document.createElement('tbody');
 tableEl.appendChild(tbodyEl);
 
-const tfootEl = document.createElement('tfoot');
+let tfootEl = document.createElement('tfoot');
 tableEl.appendChild(tfootEl);
 
 //------------------
@@ -239,6 +239,12 @@ var formElement = document.getElementById('form');
 formElement.addEventListener('submit', FormSubmitted);
 
 
+
+
+
+
+
+
 function FormSubmitted(event) {
 
   // prevent the default behaviour of refreshing the page
@@ -279,24 +285,45 @@ function FormSubmitted(event) {
 
 
 
-  //another way to add item form  but it not work becues I do not want remove all table just remove last row and add new row using function renderObjects() CreateTableFooter
-  /*
-   let containers =document.getElementById('tableEl');
-   containers.textContent='';
-  
-   CreateTableHeader();
+
+}
+
+//------------------------------------------------------
+
+/*
+
+//another way to add item form  but it not work becues I do not want remove all table just remove last row and add new row using function renderObjects() CreateTableFooter
+
+function FormSubmitted(event) {
+
+
+   // prevent the default behaviour of refreshing the page
+   event.preventDefault();
+
+
+   let name = event.target.name.value;
+   let minCus = event.target.minCus.value;
+   let maxCus = event.target.maxCus.value;
+   let avgCookies = event.target.avgCookies.value;
+
+   let store1 = new Stores(name, minCus, maxCus, avgCookies);
+
+
+   tbodyEl.textContent='';
+   tfootEl.textContent='';
+
+
+
+
+
+
+
    for (let z = 0; z < ShopesName.length; z++) {
     ShopesName[z].NumCustomers(this.minCus, this.maxCus);
     ShopesName[z].numCookiesByHour();
     ShopesName[z].renderObjects();
     }
   CreateTableFooter();
-  */
-}
-
-//------------------------------------------------------
 
 
-
-
-
+}*/
